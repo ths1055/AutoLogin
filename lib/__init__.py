@@ -1,2 +1,1 @@
-from b64Encode import*
-from b64Decode import*
+from b64EnDecode import*
