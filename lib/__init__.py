@@ -1,2 +1,2 @@
-from b64EnDecode import*
-from info import*
+from .b64EnDecode import b64ed
+from .info import checkInfo
