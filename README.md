@@ -1,2 +1,24 @@
 # prconProject
-school programming contest gold prize project
+>로그인정보를 기억해서 로그인 페이지에 기입해주는 프로그램
+## 사용법 예시
+가장 처음 실행하게 되면 기존에 저장된 데이터가 존재하지 않기 때문에 기본적으로 데이터를 입력하게 된다.
+```
+site>>>naver
+id>>>abcdefg
+pw>>>abcdef
+```
+위와 같이 입력하게 되면 사용자가 입력한 정보가 암호화 되어 저장되게 된다
+
+```
+continue? Yes:0 No:1
+>>>
+```
+그 후 위와 같이 사용자가 원하는 만큼 정보를 입력할 수 있게된다. 또한 이 과정 이후에는 프로그램을 실행시키면 데이터를 입력 할 것인지 묻게된다.
+
+```
+Website to find>>>naver
+naver
+abcdefg
+abcdef
+```
+위와같이 입력하게 되면 차례로 사이트명, id, pw가 출력된다.
