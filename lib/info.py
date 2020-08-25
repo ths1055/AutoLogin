@@ -9,8 +9,8 @@ class checkInfo:
             c=1
         else:
             wSite_after=b6.b64Encode(wSite)
-            a=0
-            f==open('data.dat','a')
+            c=0
+            f=open('data.dat','a')
             f.write(wSite_after)
             f.write('\n')
             f.close()
