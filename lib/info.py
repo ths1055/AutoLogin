@@ -1,3 +1,6 @@
+from lib import b64EnDecode
+
+b6=b64EnDecode.b64ed()
 class checkInfo:
     def writeId(self):
         wId=0
@@ -5,9 +8,10 @@ class checkInfo:
         if wId == '':
             a=1
         else:
+            wId_after=b6.b64Encode(wId)
             a=0
-            f=open('temp.tmp','a')
-            f.write(wId)
+            f=open('data.dat','a')
+            f.write(wId_after)
             f.write('\n')
             f.close()
         return a
@@ -19,8 +23,9 @@ class checkInfo:
             b=1
         else:
             b=0
-            f=open('temp.tmp','a')
-            f.write(wPw)
+            wPw_after=b6.b64Encode(wPw)
+            f=open('data.dat','a')
+            f.write(wPw_after)
             f.write('\n')
             f.close()
         return b
