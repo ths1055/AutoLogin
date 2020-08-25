@@ -2,6 +2,20 @@ from lib import b64EnDecode
 
 b6=b64EnDecode.b64ed()
 class checkInfo:
+    def writeSite(self):
+        wSite=0
+        wSite=str(input("site>>>"))
+        if wSite=='':
+            c=1
+        else:
+            wSite_after=b6.b64Encode(wSite)
+            a=0
+            f==open('data.dat','a')
+            f.write(wSite_after)
+            f.write('\n')
+            f.close()
+        return c
+        
     def writeId(self):
         wId=0
         wId=str(input("id>>>"))

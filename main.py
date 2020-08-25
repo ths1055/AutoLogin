@@ -6,8 +6,7 @@ def inputInformation():
         if aSite==1:
             aId=i.writeSite()
         else:
-            break
-    aId=i.writeId()
+            breaks
     while True:
         if aId==1:
             aId=i.writeId()
