@@ -1,6 +1,9 @@
 from lib import b64EnDecode
 from lib import info
-import selenium
+from selenium import webdriver
+import time
+from selenium.webdriver.common.keys import Keys
+
 def inputInformation():
     aSite=i.writeSite()
     while True:
@@ -21,6 +24,23 @@ def inputInformation():
             aPw=i.writePw()
         else:
             break
+
+def googles(id_g,pw_g):
+        driver=webdriver.Chrome()
+        google='https://accounts.google.com/ServiceLogin/identifier?hl=ko&passive=true&continue=https%3A%2F%2Fwww.google.com%2Fwebhp%3Fauthuser%3D0&ec=GAVAAQ&flowName=GlifWebSignIn&flowEntry=AddSession'
+        driver.get(google)
+        driver.find_element_by_name('identifier').send_keys(id_g)
+        driver.find_element_by_name("identifier").send_keys(Keys.ENTER)
+        time.sleep(10)
+        driver.find_element_by_name('password').send_keys(pw_g)
+        driver.find_element_by_name('password').send_keys(Keys.ENTER)
+
+def riroschool(id_r,pw_r):
+    driver=webdriver.Chrome()
+    riroschool='https://gyeongsanhs.riroschool.kr/'
+    driver.get(riroschool)
+    driver.find_elements_by_class_name('re_login_input').send_keys(id_r)
+    driver.find_elements_by_class_name('mpass').send_keys(pw_r)
 
 b=b64EnDecode.b64ed()
 i=info.checkInfo()
@@ -51,3 +71,12 @@ while True:
 print(passingSite)
 print(passingId)
 print(passingPw)
+#사용 가능한 사이트:카카오 메일, 다음 카카오 로그인, 구글
+kakaomail='https://accounts.kakao.com/login?continue=https%3A%2F%2Fmail.kakao.com%2F'
+daum_kakao='https://accounts.kakao.com/login?continue=https%3A%2F%2Flogins.daum.net%2Faccounts%2Fksso.do%3Frescue%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.daum.net%252F'
+google='https://accounts.google.com/ServiceLogin/identifier?hl=ko&passive=true&continue=https%3A%2F%2Fwww.google.com%2Fwebhp%3Fauthuser%3D0&ec=GAVAAQ&flowName=GlifWebSignIn&flowEntry=AddSession'
+
+if passingSite == 'google':
+    googles(passingId,passingPw)
+elif passingSite == 'riroschool':
+    riroschool(passingId,passingPw)
