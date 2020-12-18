@@ -75,6 +75,7 @@ print(passingPw)
 kakaomail='https://accounts.kakao.com/login?continue=https%3A%2F%2Fmail.kakao.com%2F'
 daum_kakao='https://accounts.kakao.com/login?continue=https%3A%2F%2Flogins.daum.net%2Faccounts%2Fksso.do%3Frescue%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.daum.net%252F'
 google='https://accounts.google.com/ServiceLogin/identifier?hl=ko&passive=true&continue=https%3A%2F%2Fwww.google.com%2Fwebhp%3Fauthuser%3D0&ec=GAVAAQ&flowName=GlifWebSignIn&flowEntry=AddSession'
+daum='https://logins.daum.net/accounts/signinform.do?url=https%3A%2F%2Fwww.daum.net%2F'
 
 if passingSite == 'google':
     googles(passingId,passingPw)
