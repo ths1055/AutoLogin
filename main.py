@@ -26,21 +26,31 @@ def inputInformation():
             break
 
 def googles(id_g,pw_g):
-        driver=webdriver.Chrome()
-        google='https://accounts.google.com/ServiceLogin/identifier?hl=ko&passive=true&continue=https%3A%2F%2Fwww.google.com%2Fwebhp%3Fauthuser%3D0&ec=GAVAAQ&flowName=GlifWebSignIn&flowEntry=AddSession'
-        driver.get(google)
-        driver.find_element_by_name('identifier').send_keys(id_g)
-        driver.find_element_by_name("identifier").send_keys(Keys.ENTER)
-        time.sleep(10)
-        driver.find_element_by_name('password').send_keys(pw_g)
-        driver.find_element_by_name('password').send_keys(Keys.ENTER)
+    driver=webdriver.Chrome()
+    google='https://accounts.google.com/ServiceLogin/identifier?hl=ko&passive=true&continue=https%3A%2F%2Fwww.google.com%2Fwebhp%3Fauthuser%3D0&ec=GAVAAQ&flowName=GlifWebSignIn&flowEntry=AddSession'
+    driver.get(google)
+    driver.find_element_by_name('identifier').send_keys(id_g)
+    driver.find_element_by_name("identifier").send_keys(Keys.ENTER)
+    time.sleep(10)
+    driver.find_element_by_name('password').send_keys(pw_g)
+    driver.find_element_by_name('password').send_keys(Keys.ENTER)
 
 def riroschool(id_r,pw_r):
     driver=webdriver.Chrome()
     riroschool='https://gyeongsanhs.riroschool.kr/'
     driver.get(riroschool)
-    driver.find_elements_by_class_name('re_login_input').send_keys(id_r)
-    driver.find_elements_by_class_name('mpass').send_keys(pw_r)
+    time.sleep(3)
+    driver.find_element_by_name('mid').send_keys(id_r)
+    driver.find_element_by_name('mpass').send_keys(pw_r)
+
+def kakaomail(id_r,pw_r):
+    driver=webdriver.Chrome()
+    kakaomail='https://mail.kakao.com'
+    driver.get(kakaomail)
+    driver.find_element_by_id('id_email_2').send_keys(id_r)
+    driver.find_element_by_id('id_password_3').send_keys(pw_r)
+    time.sleep(100)
+    
 
 b=b64EnDecode.b64ed()
 i=info.checkInfo()
@@ -72,12 +82,16 @@ print(passingSite)
 print(passingId)
 print(passingPw)
 #사용 가능한 사이트:카카오 메일, 다음 카카오 로그인, 구글
-kakaomail='https://accounts.kakao.com/login?continue=https%3A%2F%2Fmail.kakao.com%2F'
+#사용불가 사이트:리로스쿨
 daum_kakao='https://accounts.kakao.com/login?continue=https%3A%2F%2Flogins.daum.net%2Faccounts%2Fksso.do%3Frescue%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.daum.net%252F'
 google='https://accounts.google.com/ServiceLogin/identifier?hl=ko&passive=true&continue=https%3A%2F%2Fwww.google.com%2Fwebhp%3Fauthuser%3D0&ec=GAVAAQ&flowName=GlifWebSignIn&flowEntry=AddSession'
 daum='https://logins.daum.net/accounts/signinform.do?url=https%3A%2F%2Fwww.daum.net%2F'
 
 if passingSite == 'google':
     googles(passingId,passingPw)
+
 elif passingSite == 'riroschool':
     riroschool(passingId,passingPw)
+
+elif passingSite == 'kakaomail':
+    kakaomail(passingId,passingPw)
