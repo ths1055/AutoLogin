@@ -81,3 +81,5 @@ if passingSite == 'google':
     googles(passingId,passingPw)
 elif passingSite == 'riroschool':
     riroschool(passingId,passingPw)
+elif passing Site == 'daum':
+    daum(passingId,passingPw)
