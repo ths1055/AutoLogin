@@ -1,5 +1,5 @@
 '''
-Lastbuild:2020.12.19 10:49:00
+Lastbuild:2020.12.19 16:32:37
 **본 코드는 평가의 목적으로만 이용 가능하며 그 이외의 용도로 이용시 저작권법에 의거 처벌받으실 수 있습니다.**
 코드히스토리는 https://github.com/ths1055/prconProject/commits/master 에서 확인하실 수 있습니다.
 이 코드는 2020.12.18 Chrome브라우저  87.0.4280.88 버전과 Chromedriver 87.0.4280.88버전의 64비트 환경에서 작성되었습니다.
@@ -10,9 +10,10 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 from tkinter import*
+from tkinter import messagebox
 
 a=Tk()
-a.geometry('300x100')
+a.geometry('400x100')
 a.title('autoLogin')
 
 i=info.checkInfo()
@@ -65,9 +66,15 @@ def kakaomail(id_r,pw_r):
     time.sleep(100)
 
 def d_reset():
-    f=open('data.dat','w')
-    f.write('')
-    f.close()
+    response=messagebox.askyesno('초기화 주의!','저장된 모든 데이터를 초기화 하시겠습니까?')
+    if response == 1:
+        f=open('data.dat','w')
+        f.write('')
+        f.close()
+        messagebox.showinfo('완료','초기화되었습니다.')
+    
+    elif response == 0:
+        messagebox.showinfo('취소','취소되었습니다.')
 
 def find_identi():
     f=open('data.dat','r')
@@ -89,38 +96,16 @@ def find_identi():
 
     elif passingSite == 'kakaomail':
         kakaomail(passingId,passingPw)
-
-
-
-
-
-
-'''
-f=open('data.dat','r')
-if '' == f.read(1):
-    f.close()
-    #이부분에서 input으로 입력받고 info 모듈로 정보 넘겨줄것
-    inputInformation()
-while True:
-    print("continue? Yes:0 No:1")
-    continueOr=int(input(">>>"))
-    if continueOr==0:
-        inputInformation()
-    else:
-        break
-'''
-
-
-
+    
 #사용 가능한 사이트:카카오 메일, 다음 카카오 로그인, 구글
 #사용불가 사이트:리로스쿨(저장된 id,pw만 안내)
-daum_kakao='https://accounts.kakao.com/login?continue=https%3A%2F%2Flogins.daum.net%2Faccounts%2Fksso.do%3Frescue%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.daum.net%252F'
-google='https://accounts.google.com/ServiceLogin/identifier?hl=ko&passive=true&continue=https%3A%2F%2Fwww.google.com%2Fwebhp%3Fauthuser%3D0&ec=GAVAAQ&flowName=GlifWebSignIn&flowEntry=AddSession'
-daum='https://logins.daum.net/accounts/signinform.do?url=https%3A%2F%2Fwww.daum.net%2F'
 
-
-Label(a,text='Auto Login').grid(row=1,column=2)
-Button(a,text='ID,PW RECORD',command=inputInformation).grid(row=2,column=1)
-Button(a,text='FIND ID,PW',command=find_identi).grid(row=2,column=2)
-Button(a,text='DATA RESET',command=d_reset).grid(row=2,column=3)
+Label(a,text='Auto Login').grid(row=1,column=4)
+Label(a,text='    ').grid(row=2,column=1)
+Button(a,text='ID,PW RECORD',command=inputInformation,width=15).grid(row=2,column=2)
+Label(a,text='').grid(row=2,column=3)
+Button(a,text='FIND ID,PW',command=find_identi,width=15).grid(row=2,column=4)
+Label(a,text='').grid(row=2,column=5)
+Button(a,text='DATA RESET',command=d_reset,width=15).grid(row=2,column=6)
+messagebox.showwarning('주의','caution.txt파일을 정독한 후 사용해 주십시오')
 a.mainloop()
