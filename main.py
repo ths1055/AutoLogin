@@ -1,5 +1,5 @@
 '''
-Lastbuild:2020.12.19 16:32:37
+Lastbuild:2020.12.21 19:31:48
 **본 코드는 평가의 목적으로만 이용 가능하며 그 이외의 용도로 이용시 저작권법에 의거 처벌받으실 수 있습니다.**
 코드히스토리는 https://github.com/ths1055/AutoLogin/commits/master 에서 확인하실 수 있습니다.
 이 코드는 2020.12.18 Chrome브라우저  87.0.4280.88 버전과 Chromedriver 87.0.4280.88버전의 64비트 환경에서 작성되었습니다.
@@ -63,7 +63,17 @@ def kakaomail(id_r,pw_r):
     driver.get(kakaomail)
     driver.find_element_by_id('id_email_2').send_keys(id_r)
     driver.find_element_by_id('id_password_3').send_keys(pw_r)
-    time.sleep(100)
+    time.sleep(1)
+    
+def ebs_onlineclass(id_r,pw_r):
+    driver = webdriver.Chrome()
+    ebsClass1='https://hoc31.ebssw.kr/onlineClass/search/onlineClassSearchView.do?schulCcode=09991&schCssTyp=online_high'
+    ebsClass2='https://hoc31.ebssw.kr/sso/loginView.do?loginType=onlineClass'
+    driver.get(ebsClass1)
+    driver.get(ebsClass2)
+    driver.find_element_by_id('j_username').send_keys(id_r)
+    driver.find_element_by_id('j_password').send_keys(pw_r)
+    time.sleep(1)
 
 def d_reset():
     response=messagebox.askyesno('초기화 주의!','저장된 모든 데이터를 초기화 하시겠습니까?')
@@ -97,7 +107,10 @@ def find_identi():
     elif passingSite == 'kakaomail':
         kakaomail(passingId,passingPw)
     
-#사용 가능한 사이트:카카오 메일, 다음 카카오 로그인, 구글
+    elif passingSite == 'ebsonlineclass':
+        ebs_onlineClass(passingId,PassingPw)
+    
+#사용 가능한 사이트:카카오 메일, 다음 카카오 로그인, 구글, ebs
 #사용불가 사이트:리로스쿨(저장된 id,pw만 안내)
 
 Label(a,text='Auto Login').grid(row=1,column=4)
